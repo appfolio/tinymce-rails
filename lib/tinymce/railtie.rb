@@ -19,12 +19,12 @@ module TinyMCE
     end
 
     initializer "static assets", :group => :all do |app|
-      if Rails::VERSION::MAJOR == 5
-        if app.config.serve_static_files
+      if Rails::VERSION::MAJOR < 5
+        if app.config.serve_static_assets
           app.config.assets.paths.unshift File.join(asset_root, 'precompiled')
         end
       else
-        if app.config.serve_static_assets
+        if app.config.serve_static_files
           app.config.assets.paths.unshift File.join(asset_root, 'precompiled')
         end
       end
