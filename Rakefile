@@ -3,6 +3,8 @@ unless defined? TinyMCE::VERSION
   require "tinymce/version"
 end
 
+require "af_gems/gem_tasks"
+
 def step(name)
   print "#{name} ..."
   yield
@@ -31,7 +33,7 @@ task :extract do
     `mkdir -p assets/precompiled/tinymce`
     `mv tmp/tinymce/jscripts/tiny_mce/* assets/precompiled/tinymce/`
   end
-  
+
   step "Extracting jQuery files" do
     `rm -rf tmp/tinymce`
     `unzip -u tmp/tinymce.jquery.zip -d tmp`
@@ -50,7 +52,7 @@ task :process do
       File.open(file, 'w') { |f| f.write(contents) }
     end
   end
-  
+
   step "Copying includeable assets" do
     `cp assets/precompiled/tinymce/tiny_mce_src.js assets/vendor/tinymce/tiny_mce.js`
     `cp assets/precompiled/tinymce/tiny_mce_jquery_src.js assets/vendor/tinymce/tiny_mce_jquery.js`

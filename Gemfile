@@ -8,3 +8,5 @@ gem 'uglifier'
 gem 'json', :platforms => [:ruby_18]
 
 gemspec
+
+gem 'af_gems', '~> 6.0', source: 'https://gemini.atl.appfolio.net'

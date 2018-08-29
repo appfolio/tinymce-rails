@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.files = Dir["README.md", "LICENSE", "Rakefile", "assets/**/*", "lib/**/*"]
   s.authors = ["Sam Pohlenz"]
   s.email = "sam@sampohlenz.com"
-  
+  s.metadata['allowed_push_host'] = 'https://gemini.atl.appfolio.net'
+
   s.add_dependency "railties",  ">= 3.1"
 end
