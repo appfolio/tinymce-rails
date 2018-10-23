@@ -19,8 +19,13 @@ module TinyMCE
     end
 
     initializer "static assets", :group => :all do |app|
-      if Rails::VERSION::MAJOR < 5
+      rails_version = Rails.gem_version
+      if rails_version < Gem::Version.new('5.0')
         if app.config.serve_static_assets
+          app.config.assets.paths.unshift File.join(asset_root, 'precompiled')
+        end
+      elsif rails_version >= Gem::Version.new('5.2')
+        if app.config.public_file_server.enabled
           app.config.assets.paths.unshift File.join(asset_root, 'precompiled')
         end
       else
